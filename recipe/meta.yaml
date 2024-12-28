@@ -8,34 +8,36 @@ package:
 
 source:
   fn: {{ name }}-{{ version }}.tar.gz
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: {{ sha256 }}
 
 build:
   noarch: python
-  number: 0
-  script: "{{ PYTHON }} -m pip install . --no-deps -vv"
+  number: 1
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
 
 requirements:
   host:
     - pip
-    - python
+    - python {{ python_min }}
     - setuptools
   run:
-    - python
+    - python >={{ python_min }}
     - numpy
     - scipy
 
 test:
+  requires:
+    - python {{ python_min }}
   imports:
     - fbpca
 
 about:
   home: https://github.com/facebook/fbpca
-  license: BSD
+  license: BSD-3-Clause
   license_family: BSD
   license_file: '{{ environ["RECIPE_DIR"] }}/LICENSE'
-  summary: 'Fast Randomized PCA/SVD '
+  summary: Fast Randomized PCA/SVD
 
   description: |
     Functions for principal component analysis (PCA)
