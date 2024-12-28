@@ -5,9 +5,9 @@ Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/fbpca-feedstock
 
 Home: https://github.com/facebook/fbpca
 
-Package license: BSD
+Package license: BSD-3-Clause
 
-Summary: Fast Randomized PCA/SVD 
+Summary: Fast Randomized PCA/SVD
 
 Development: https://github.com/facebook/fbpca
 
